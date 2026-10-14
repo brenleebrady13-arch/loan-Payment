@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Payment Calculator</title>
+    <script>
+        function calculatePayment() {
+            // Get values from input elements (adjust IDs to match your HTML)
+            let pv = parseFloat(document.getElementById("loanAmount").value);
+            let years = parseFloat(document.getElementById("years").value);
+            let annualRate = parseFloat(document.getElementById("interestRate").value);
+
+            // Monthly interest rate and total number of payments
+            let r = (annualRate / 100) / 12;
+            let n = years * 12;
+
+            // Standard loan payment formula
+            let p = pv * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+
+            // Format to 2 decimal places using .toFixed(2)
+            let formattedPayment = p.toFixed(2);
+
+            // Output the result inside a sentence with all three inputs
+            document.getElementById("result").innerText = 
+                `If you a $${pv.toLocaleString()} loan for ${years} years at ${annualRate} interest, Your monthly payment will be: $${formattedPayment}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Loan Payment Calculator</h1>
+    
+    <label for="loanAmount">Present Value - Amount you wish to borrow</label>
+    <input type="number" id="loanAmount" value="25000"><br><br>
+
+    <label for="years">Years</label>
+    <input type="number" id="years" value="6"><br><br>
+
+    <label for="interestRate">% -- Annual interest rate</label>
+    <input type="number" id="interestRate" value="6"><br><br>
+
+    <button onclick="calculatePayment()">Calculate the Monthly Payment</button>
+
+    <p id="result"></p>
+</body>
+</html>

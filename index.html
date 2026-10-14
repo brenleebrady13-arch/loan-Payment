@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
+<<head>
     <title>Loan Payment Calculator</title>
     <script>
         function calculatePayment() {
-            let pv = parseFloat(document.getElementById("loanAmount").value);
-            let years = parseFloat(document.getElementById("years").value);
-            let annualRate = parseFloat(document.getElementById("interestRate").value);
-
-            let r = (annualRate / 100) / 12;
-            let n = years * 12;
+            let PV = parseFloat(document.getElementById("loanAmount").value);
+            let n = parseFloat(document.getElementById("years").value);
+            let r = parseFloat(document.getElementById("interestRate").value);
 
             let P = ((r / 100 / 12) * PV) / (1 - (1 + (r / 100 / 12)) ** -(n * 12));
 
-            let formattedPayment = p.toFixed(2);
+            let formattedPayment = P.toFixed(2);
 
             document.getElementById("result").innerText = 
-                `If you a $${pv.toLocaleString()} loan for ${years} years at ${annualRate} interest, Your monthly payment will be: $${formattedPayment}`;
+                `If you a $${PV} loan for ${n} years at ${r} interest, Your monthly payment will be: $${formattedPayment}`;
         }
     </script>
 </head>
 <body>
+
     <h1>Loan Payment Calculator</h1>
     
-    <label for="loanAmount">Present Value - Amount you wish to borrow</label>
-    <input type="number" id="loanAmount" value="25000"><br><br>
-
-    <label for="years">Years</label>
-    <input type="number" id="years" value="6"><br><br>
-
-    <label for="interestRate">% -- Annual interest rate</label>
-    <input type="number" id="interestRate" value="6"><br><br>
+    <p>
+        <input type="number" id="loanAmount" value="25000"> Present Value -- Amount you wish to borrow
+    </p>
+    <p>
+        <input type="number" id="years" value="6"> Years
+    </p>
+    <p>
+        <input type="number" id="interestRate" value="6"> % -- Annual interest rate
+    </p>
 
     <button onclick="calculatePayment()">Calculate the Monthly Payment</button>
 
     <p id="result"></p>
+
 </body>
 </html>

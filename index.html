@@ -10,17 +10,13 @@
             let years = parseFloat(document.getElementById("years").value);
             let annualRate = parseFloat(document.getElementById("interestRate").value);
 
-            // Monthly interest rate and total number of payments
             let r = (annualRate / 100) / 12;
             let n = years * 12;
 
-            // Standard loan payment formula
-            let p = pv * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+            let P = ((r / 100 / 12) * PV) / (1 - (1 + (r / 100 / 12)) ** -(n * 12));
 
-            // Format to 2 decimal places using .toFixed(2)
             let formattedPayment = p.toFixed(2);
 
-            // Output the result inside a sentence with all three inputs
             document.getElementById("result").innerText = 
                 `If you a $${pv.toLocaleString()} loan for ${years} years at ${annualRate} interest, Your monthly payment will be: $${formattedPayment}`;
         }
